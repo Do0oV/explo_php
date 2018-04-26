@@ -9,6 +9,7 @@ if (isset($_GET['dossier'])) {
 	//$dossier = '../explo_php';
 }
 
+
 // fonction pour meilleure lecture des tailles
 function formatBytes($size, $precision = 2)
 {
@@ -18,14 +19,17 @@ function formatBytes($size, $precision = 2)
     return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
 }
 
+
 //lance la fonction
 explore($dossier);
+
 
 
 function explore($dossier){
 
 	//affiche le repertoire courant
 	echo '<div class="card-panel col s12 m6 offset-m3 grey lighten-1 black-text center current z-depth-3"><h5>'.$dossier.'/</h5></div><br><br>';
+	// 
 	$iterator = new FilesystemIterator($dossier, FilesystemIterator::UNIX_PATHS);
 
 	foreach($iterator as $element){
@@ -71,7 +75,7 @@ function explore($dossier){
 
 				echo '<div class="col s12 m6 l4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/zip.png" width="64" height="64"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="'.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a></p></div></div></div></div>'.PHP_EOL;
 			}
-			elseif (!(preg_match("/\.(gif|png|jpg|jpeg|svg)$/", $element)) && !(preg_match("/\.(mp3|flac|wav|wma)$/", $element)) && !(preg_match("/\.(mp4|mkv|avi|webm|ogg|mpg|mpeg|mp2|mpv|m4p|m4v|mpe)$/", $element)) ) {
+			else{
 
 				echo '<div class="col s12 m6 l4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/txt.png" width="64" height="64"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="'.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a></p></div></div></div></div>'.PHP_EOL;
 
