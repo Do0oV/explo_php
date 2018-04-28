@@ -14,14 +14,24 @@ if (isset($_GET['file'])) {
 
 	if(is_file($file_name)) {
 
-		header('Content-Type: application/force-download');
-		header('Content-Disposition: attachment; filename="'.basename($file_name).'"');
+		header('Content-Description: File Transfer');
+		header('Content-Type: application/octet-stream');
+		header('Content-Disposition: attachment; filename='.basename($file_name));
 		header('Content-Transfer-Encoding: binary');
-		header('Content-Length: '.filesize($file_name));
-		readfile($file_name);	
-		exit();
+		header('Expires: 0');
+		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+		header('Pragma: public');
+		header('Content-Length: ' . filesize($file_name));
+		ob_clean();
+		flush();
+		readfile($file_name);
+		exit;
+	}
+	else {
+		die('The provided file path is not valid.');
 	}
 }
+
 
 // fonction pour meilleure lecture des tailles
 function formatBytes($size, $precision = 2)
@@ -87,7 +97,7 @@ function explore($dossier){
 			}elseif (preg_match("/\.(rar|tar|zip|7z)$/", $element)) {
 
 				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/zip.png" width="64" height="64" alt="archiveIcon"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
-				
+
 			}else{
 
 				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/txt.png" width="64" height="64" alt="textIcon"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
