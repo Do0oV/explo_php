@@ -24,7 +24,7 @@
 			</nav>
 		</div>
 		<ul class="sidenav blue-grey darken-3" id="mobile-demo">
-			<li><a class="white-text" href="index.php" class="sidenav-close">Home</a></li>
+			<li><a href="index.php" class="sidenav-close white-text">Home</a></li>
 			<li><a href="#" class="sidenav-close">Fermer</a></li>
 		</ul>
 	</header>
@@ -50,6 +50,7 @@
 	</div>
 
 	</div> <!-- FIN CONTAINER -->
+
 	<script
 	src="https://code.jquery.com/jquery-3.3.1.js"
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="

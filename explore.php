@@ -56,7 +56,7 @@ function explore($dossier){
 			$dir = $element->getPathname();
 			$nbFiles = (count(scandir($dir)) - 2);
 
-			echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/folder.png"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="index.php?dossier='.$dir.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.$nbFiles.' fichier(s)</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
+			echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/folder.png" alt=""></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="index.php?dossier='.$dir.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.$nbFiles.' fichier(s)</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
 		}
 
 		// si c'est un fichier
@@ -66,26 +66,31 @@ function explore($dossier){
 
 			if(preg_match("/\.(gif|png|jpg|jpeg|svg)$/", $element)){
 
-				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/jpg.png" width="64" height="64"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
+				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/jpg.png" width="64" height="64" alt="folderIcon"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
 			}
 			// autre manière de forcer le download
 			elseif (preg_match("/\.(mp3|flac|wav|wma)$/", $element)) {
-				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/mp3.png" width="64" height="64"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="'.$path.'" class="white-text" download>'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
+				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/mp3.png" width="64" height="64" alt="imageIcon"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="'.$path.'" class="white-text" download>'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
+
 			}elseif (preg_match("/\.(mp4|mkv|avi|webm|ogg|mpg|mpeg|mp2|mpv|m4p|m4v|mpe|flv)$/", $element)) {
 
-				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/mpg.png" width="64" height="64"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
+				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/mpg.png" width="64" height="64" alt="videoIcon"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
+
 			}elseif (preg_match("/\.(pdf)$/", $element)) {
 
-				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/pdf.png" width="64" height="64"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
+				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/pdf.png" width="64" height="64" alt="pdfIcon"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
+
 			}elseif (preg_match("/\.(html|php|js|xml|htm|mpg|css)$/", $element)) {
 
-				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/xml.png" width="64" height="64"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
+				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/xml.png" width="64" height="64" alt="codeIcon"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
+
 			}elseif (preg_match("/\.(rar|tar|zip|7z)$/", $element)) {
 
-				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/zip.png" width="64" height="64"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
+				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/zip.png" width="64" height="64" alt="archiveIcon"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
+				
 			}else{
 
-				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/txt.png" width="64" height="64"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
+				echo '<div class="col s12 m6 xl4"><div class="card horizontal grey darken-3 z-depth-3"><div class="card-image valign-wrapper"><img src="./images/txt.png" width="64" height="64" alt="textIcon"></div><div class="card-stacked"><div class="card-content valign-wrapper"><p><a href="?file='.$path.'" class="white-text">'.$element->getFilename().'</a><br><a class="black-text files">'.formatBytes($element->getSize()).'</a><br><a class="black-text files">'.$infos.'</a></p></div></div></div></div>'.PHP_EOL;
 			}
 		}
 	}

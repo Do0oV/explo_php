@@ -16,10 +16,10 @@ p a {
 	font-size: 1.20em;
 }
 .row {
-	margin-top: 5%;
+	margin-top: 4%;
 }
 .current {
-	margin-bottom: 5%;
+	margin-bottom: 4%;
 }
 .card-image img{
 	padding-left: 0.5em;
@@ -38,7 +38,7 @@ p a {
 .card, .btn-large, .card-panel {
 	border-radius: 10px;
 }
-.card, .btn-large {
+.card, .btn-large, .sidenav {
 	background-image: url("./images/outlets.png");
 }
 
