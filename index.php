@@ -31,7 +31,7 @@
 
 	<div class="container content">
 
-		<div class="row affichage">
+		<div class="row">
 			<?php
 			// Affichage résultat de la fonction explore
 			include 'explore.php';
@@ -48,9 +48,8 @@
 			<i class="large material-icons">arrow_upward</i>
 		</a>
 	</div>
-	</div>
 
-
+	</div> <!-- FIN CONTAINER -->
 	<script
 	src="https://code.jquery.com/jquery-3.3.1.js"
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="

@@ -9,7 +9,7 @@ body {
 p {
 	word-break: break-all;
 }
-p:hover {
+a:first-child:hover {
 	opacity: 0.5;
 }
 p a {
@@ -29,7 +29,7 @@ p a {
 	font-style: italic;
 }
 .horizontal {
-	height: 100px;
+	height: 120px;
 }
 .button a {
 	font-weight: bold;
@@ -42,7 +42,7 @@ p a {
 	background-image: url("./images/outlets.png");
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 800px) {
 
 	nav .brand-logo {
 		font-size: 1.3em;
